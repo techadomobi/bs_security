@@ -2,6 +2,13 @@
 
 This project is a monorepo with a React + Vite frontend (`artifacts/mockup-sandbox`) that can be deployed to Vercel.
 
+## What Gets Deployed
+
+The deployment includes:
+- **Homepage**: A professional landing page with hero section, features, and call-to-action
+- **Component Preview System**: Access individual components at `/preview/ComponentName` routes
+- **Full SPA Routing**: All routes serve the React app for seamless navigation
+
 ## Prerequisites
 
 - Node.js 20.19+ or 22.12+ (Vite 7 requirement)
