@@ -1,0 +1,31 @@
+kind = "web"
+previewPath = "/"
+title = "BS Security Solutions"
+version = "1.0.0"
+id = "artifacts/bs-security"
+router = "path"
+
+[[integratedSkills]]
+name = "react-vite"
+version = "1.0.0"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 24186
+
+[services.development]
+run = "pnpm --filter @workspace/bs-security run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/bs-security", "run", "build" ]
+publicDir = "artifacts/bs-security/dist/public"
+serve = "static"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "24186"
+BASE_PATH = "/"

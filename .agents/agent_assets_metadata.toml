@@ -1,0 +1,38 @@
+uploads = []
+outputs = []
+
+[[generated]]
+id = "yF-GNJGpEYyX2nuT6RcQ8"
+uri = "file://artifacts/bs-security/public/images/hero.png"
+type = "image"
+title = "CCTV control room hero"
+
+[[generated]]
+id = "EpfLOTKLyh0cVzhyh8Vcv"
+uri = "file://artifacts/bs-security/public/images/portfolio-1.png"
+type = "image"
+title = "Commercial building CCTV"
+
+[[generated]]
+id = "jPXABZsLE3frYM3SwrbIt"
+uri = "file://artifacts/bs-security/public/images/portfolio-2.png"
+type = "image"
+title = "Security control room"
+
+[[generated]]
+id = "XUJSPhH7IGIv_ucqRCuLI"
+uri = "file://artifacts/bs-security/public/images/portfolio-3.png"
+type = "image"
+title = "Office interior camera"
+
+[[generated]]
+id = "nC5n0Xz1SHWJyCsTo8iAk"
+uri = "file://artifacts/bs-security/public/images/portfolio-4.png"
+type = "image"
+title = "Home entrance camera"
+
+[[generated]]
+id = "yU1KZ3_sXQi8I48VB85gr"
+uri = "file://artifacts/bs-security/public/images/feature-camera.png"
+type = "image"
+title = "4K security camera"
