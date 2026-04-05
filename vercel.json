@@ -1,8 +1,8 @@
 {
   "$schema": "https://open.vercel.com/schema.json",
   "installCommand": "pnpm install --frozen-lockfile",
-  "buildCommand": "pnpm --filter @workspace/mockup-sandbox run build",
-  "outputDirectory": "artifacts/mockup-sandbox/dist",
+  "buildCommand": "pnpm --filter @workspace/bs-security run build",
+  "outputDirectory": "artifacts/bs-security/dist",
   "framework": "vite",
   "rewrites": [
     {
