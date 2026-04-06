@@ -578,70 +578,6 @@ export default function ServiceDetails() {
                       </li>
                       <li className="flex items-center gap-2 text-sm">
                         <CheckCircle className="w-4 h-4 text-green-500" />
-
-                  {/* Service Breakdown */}
-                  <section className="py-16 bg-gray-50">
-                    <div className="container mx-auto px-4 md:px-6">
-                      <div className="grid grid-cols-1 xl:grid-cols-2 gap-12 items-start">
-                        <div>
-                          <FadeIn>
-                            <p className="text-primary font-semibold text-sm uppercase tracking-wider mb-3">Service Breakdown</p>
-                            <SlideReveal>
-                              <h2 className="text-3xl font-bold mb-4">What this service actually covers</h2>
-                            </SlideReveal>
-                            <p className="text-gray-700 leading-relaxed mb-6">{story.longDescription}</p>
-                            <div className="space-y-4">
-                              {story.deliverables.map((item, index) => (
-                                <motion.div
-                                  key={item}
-                                  className="flex items-start gap-3"
-                                  initial={{ opacity: 0, x: -10 }}
-                                  whileInView={{ opacity: 1, x: 0 }}
-                                  viewport={{ once: true }}
-                                  transition={{ delay: index * 0.08 }}
-                                >
-                                  <CheckCircle className="w-5 h-5 text-green-500 shrink-0 mt-0.5" />
-                                  <span className="text-gray-700">{item}</span>
-                                </motion.div>
-                              ))}
-                            </div>
-                          </FadeIn>
-                        </div>
-                        <div>
-                          <FadeIn delay={0.2}>
-                            <Card className="h-full border border-border/50 shadow-sm">
-                              <CardHeader>
-                                <CardTitle className="flex items-center gap-3">
-                                  <ShieldCheck className="w-5 h-5 text-blue-600" />
-                                  Before We Start
-                                </CardTitle>
-                              </CardHeader>
-                              <CardContent>
-                                <div className="space-y-4">
-                                  {story.siteChecks.map((item, index) => (
-                                    <motion.div
-                                      key={item}
-                                      className="flex gap-3 items-start"
-                                      initial={{ opacity: 0, y: 8 }}
-                                      whileInView={{ opacity: 1, y: 0 }}
-                                      viewport={{ once: true }}
-                                      transition={{ delay: index * 0.08 }}
-                                    >
-                                      <div className="w-2 h-2 rounded-full bg-blue-600 mt-2 shrink-0" />
-                                      <div>
-                                        <div className="font-medium text-gray-900">{item}</div>
-                                        <div className="text-sm text-gray-600">Checked during the site visit so the final plan fits the property accurately.</div>
-                                      </div>
-                                    </motion.div>
-                                  ))}
-                                </div>
-                              </CardContent>
-                            </Card>
-                          </FadeIn>
-                        </div>
-                      </div>
-                    </div>
-                  </section>
                         Secure cloud storage
                       </li>
                       <li className="flex items-center gap-2 text-sm">
@@ -760,6 +696,70 @@ export default function ServiceDetails() {
                       <div className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
                         <span className="text-sm font-medium text-gray-600">Warranty</span>
                         <span className="text-sm text-gray-800">{service.warranty}</span>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </FadeIn>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Service Breakdown */}
+        <section className="py-16 bg-gray-50">
+          <div className="container mx-auto px-4 md:px-6">
+            <div className="grid grid-cols-1 xl:grid-cols-2 gap-12 items-start">
+              <div>
+                <FadeIn>
+                  <p className="text-primary font-semibold text-sm uppercase tracking-wider mb-3">Service Breakdown</p>
+                  <SlideReveal>
+                    <h2 className="text-3xl font-bold mb-4">What this service actually covers</h2>
+                  </SlideReveal>
+                  <p className="text-gray-700 leading-relaxed mb-6">{story.longDescription}</p>
+                  <div className="space-y-4">
+                    {story.deliverables.map((item, index) => (
+                      <motion.div
+                        key={item}
+                        className="flex items-start gap-3"
+                        initial={{ opacity: 0, x: -10 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: index * 0.08 }}
+                      >
+                        <CheckCircle className="w-5 h-5 text-green-500 shrink-0 mt-0.5" />
+                        <span className="text-gray-700">{item}</span>
+                      </motion.div>
+                    ))}
+                  </div>
+                </FadeIn>
+              </div>
+              <div>
+                <FadeIn delay={0.2}>
+                  <Card className="h-full border border-border/50 shadow-sm">
+                    <CardHeader>
+                      <CardTitle className="flex items-center gap-3">
+                        <ShieldCheck className="w-5 h-5 text-blue-600" />
+                        Before We Start
+                      </CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <div className="space-y-4">
+                        {story.siteChecks.map((item, index) => (
+                          <motion.div
+                            key={item}
+                            className="flex gap-3 items-start"
+                            initial={{ opacity: 0, y: 8 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ delay: index * 0.08 }}
+                          >
+                            <div className="w-2 h-2 rounded-full bg-blue-600 mt-2 shrink-0" />
+                            <div>
+                              <div className="font-medium text-gray-900">{item}</div>
+                              <div className="text-sm text-gray-600">Checked during the site visit so the final plan fits the property accurately.</div>
+                            </div>
+                          </motion.div>
+                        ))}
                       </div>
                     </CardContent>
                   </Card>
