@@ -582,7 +582,7 @@ export default function ServiceDetails() {
                   {/* Service Breakdown */}
                   <section className="py-16 bg-gray-50">
                     <div className="container mx-auto px-4 md:px-6">
-                      <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+                      <div className="grid grid-cols-1 xl:grid-cols-2 gap-12 items-start">
                         <div>
                           <FadeIn>
                             <p className="text-primary font-semibold text-sm uppercase tracking-wider mb-3">Service Breakdown</p>
@@ -723,7 +723,7 @@ export default function ServiceDetails() {
         {/* Technical Details */}
         <section className="py-16 bg-white">
           <div className="container mx-auto px-4 md:px-6">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+            <div className="grid grid-cols-1 xl:grid-cols-2 gap-12 items-start">
               <div>
                 <FadeIn>
                   <h2 className="text-2xl font-bold mb-6">Technical Specifications</h2>
@@ -823,7 +823,7 @@ export default function ServiceDetails() {
               </FadeIn>
             </div>
 
-            <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-8" staggerDelay={0.1}>
+            <StaggerContainer className="grid grid-cols-1 xl:grid-cols-3 gap-8" staggerDelay={0.1}>
               {story.useCases.map((item) => (
                 <StaggerItem key={item.title} direction="up">
                   <AnimatedCard>
@@ -853,7 +853,7 @@ export default function ServiceDetails() {
               </FadeIn>
             </div>
 
-            <StaggerContainer className="grid grid-cols-1 lg:grid-cols-3 gap-6" staggerDelay={0.08}>
+            <StaggerContainer className="grid grid-cols-1 xl:grid-cols-3 gap-6" staggerDelay={0.08}>
               {story.faqs.map((faq) => (
                 <StaggerItem key={faq.q} direction="scale">
                   <Card className="h-full border border-border/50 shadow-sm bg-white">
@@ -901,7 +901,7 @@ export default function ServiceDetails() {
               </motion.div>
             </div>
 
-            <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-8" staggerDelay={0.12}>
+            <StaggerContainer className="grid grid-cols-1 xl:grid-cols-3 gap-8" staggerDelay={0.12}>
               {testimonials.map((testimonial) => (
                 <StaggerItem key={testimonial.name} direction="scale">
                   <AnimatedCard>
