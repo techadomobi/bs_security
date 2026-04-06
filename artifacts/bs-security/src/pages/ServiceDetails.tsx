@@ -4,7 +4,7 @@ import {
   Camera, Building2, Home as HomeIcon, Server, Wrench, Wifi,
   Users, Zap, ArrowLeft, CheckCircle, Clock, ShieldCheck, Award,
   Smartphone, Cloud, Video, Eye, Wifi as WifiIcon, Battery, Globe,
-  Fingerprint, CreditCard, AlertTriangle, Thermometer, Speaker, Lightbulb
+  Fingerprint, CreditCard, AlertTriangle, Thermometer, Speaker, Lightbulb, Star
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -271,6 +271,24 @@ const serviceDetails = [
   }
 ];
 
+const testimonials = [
+  {
+    name: "Anita Verma",
+    role: "Shop Owner, Malviya Nagar",
+    quote: "The team explained the full setup clearly, finished on time, and the cameras cover every entry point without cluttered wiring.",
+  },
+  {
+    name: "Suresh Gupta",
+    role: "Resident, Vasant Kunj",
+    quote: "They were professional from site visit to installation. The mobile app setup was also explained in a simple way, which made a big difference.",
+  },
+  {
+    name: "Meera Joshi",
+    role: "School Principal",
+    quote: "We appreciated the detailed guidance and honest recommendations. The system works reliably and the support after installation has been excellent.",
+  },
+];
+
 export default function ServiceDetails() {
   const params = useParams();
   const serviceId = params?.id;
@@ -298,7 +316,7 @@ export default function ServiceDetails() {
     <PageTransition>
       <div className="min-h-screen bg-background text-foreground overflow-x-hidden font-sans">
         {/* Header */}
-        <section className="pt-24 pb-16 md:pt-32 md:pb-20 bg-gradient-to-br from-blue-50 to-indigo-50 relative overflow-hidden">
+        <section className="pt-24 pb-16 md:pt-32 md:pb-20 bg-linear-to-br from-blue-50 to-indigo-50 relative overflow-hidden">
           <BlobBackground className="absolute -top-20 right-0 w-96 h-96 bg-blue-500" />
           <div className="container mx-auto px-4 md:px-6 relative z-10">
             <FadeIn>
@@ -341,7 +359,7 @@ export default function ServiceDetails() {
                       <motion.div key={feature} className="flex items-center gap-3 text-gray-700"
                         initial={{ opacity: 0, x: -10 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}
                         transition={{ delay: index * 0.1 }}>
-                        <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0" />
+                        <CheckCircle className="w-5 h-5 text-green-500 shrink-0" />
                         <span>{feature}</span>
                       </motion.div>
                     ))}
@@ -363,7 +381,7 @@ export default function ServiceDetails() {
                           <motion.div key={step.step} className="flex gap-4"
                             initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
                             transition={{ delay: step.step * 0.1 }}>
-                            <div className="flex-shrink-0 w-10 h-10 bg-blue-100 text-blue-700 rounded-full flex items-center justify-center font-bold text-sm">
+                            <div className="shrink-0 w-10 h-10 bg-blue-100 text-blue-700 rounded-full flex items-center justify-center font-bold text-sm">
                               {step.step}
                             </div>
                             <div>
@@ -497,7 +515,7 @@ export default function ServiceDetails() {
                       <motion.div key={index} className="flex items-start gap-3"
                         initial={{ opacity: 0, x: -10 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}
                         transition={{ delay: index * 0.1 }}>
-                        <div className="w-2 h-2 bg-blue-600 rounded-full mt-2 flex-shrink-0"></div>
+                        <div className="w-2 h-2 bg-blue-600 rounded-full mt-2 shrink-0"></div>
                         <span className="text-gray-700">{tech}</span>
                       </motion.div>
                     ))}
@@ -531,6 +549,77 @@ export default function ServiceDetails() {
                 </FadeIn>
               </div>
             </div>
+          </div>
+        </section>
+
+        {/* Reviews */}
+        <section className="py-16 bg-slate-50">
+          <div className="container mx-auto px-4 md:px-6">
+            <div className="text-center max-w-3xl mx-auto mb-14">
+              <FadeIn>
+                <p className="text-primary font-semibold text-sm uppercase tracking-wider mb-3">Client Reviews</p>
+                <SlideReveal>
+                  <h2 className="text-3xl md:text-4xl font-bold font-display mb-4">What Customers Say About This Service</h2>
+                </SlideReveal>
+                <p className="text-lg text-gray-600">
+                  Real feedback from customers who chose this service for their homes, shops, and commercial spaces.
+                </p>
+              </FadeIn>
+            </div>
+
+            <div className="max-w-3xl mx-auto mb-10 text-center">
+              <motion.div
+                className="inline-flex items-center gap-3 rounded-full bg-white px-5 py-3 shadow-sm border border-border/50"
+                initial={{ opacity: 0, y: 12 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+              >
+                <div className="flex items-center gap-1 text-yellow-400">
+                  {[1, 2, 3, 4, 5].map((star) => (
+                    <Star key={star} className="w-4 h-4 fill-current" />
+                  ))}
+                </div>
+                <div className="text-sm font-medium text-gray-700">
+                  4.9/5 average rating from 200+ customer reviews
+                </div>
+              </motion.div>
+            </div>
+
+            <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-8" staggerDelay={0.12}>
+              {testimonials.map((testimonial) => (
+                <StaggerItem key={testimonial.name} direction="scale">
+                  <AnimatedCard>
+                    <Card className="h-full border border-border/50 shadow-sm bg-white">
+                      <CardContent className="p-8">
+                        <div className="flex gap-0.5 text-yellow-400 mb-5">
+                          {Array(5).fill(0).map((_, index) => (
+                            <motion.span
+                              key={index}
+                              initial={{ opacity: 0, scale: 0 }}
+                              whileInView={{ opacity: 1, scale: 1 }}
+                              viewport={{ once: true }}
+                              transition={{ delay: index * 0.08, type: "spring", stiffness: 400 }}
+                            >
+                              <Star className="w-4 h-4 fill-current" />
+                            </motion.span>
+                          ))}
+                        </div>
+                        <p className="text-gray-700 italic leading-relaxed mb-6">"{testimonial.quote}"</p>
+                        <div className="flex items-center gap-3">
+                          <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
+                            <Users className="w-5 h-5 text-primary" />
+                          </div>
+                          <div>
+                            <div className="font-bold text-sm text-gray-900">{testimonial.name}</div>
+                            <div className="text-xs text-gray-500">{testimonial.role}</div>
+                          </div>
+                        </div>
+                      </CardContent>
+                    </Card>
+                  </AnimatedCard>
+                </StaggerItem>
+              ))}
+            </StaggerContainer>
           </div>
         </section>
 
