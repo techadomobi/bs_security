@@ -22,7 +22,14 @@ function Router() {
         <Switch>
           <Route path="/" component={Home} />
           <Route path="/services" component={Services} />
-          <Route path="/service/:id" component={ServiceDetails} />
+          <Route path="/service/cctv-camera-installation" component={ServiceDetails} />
+          <Route path="/service/commercial-security" component={ServiceDetails} />
+          <Route path="/service/home-security-systems" component={ServiceDetails} />
+          <Route path="/service/dvr/nvr-setup-&-repair" component={ServiceDetails} />
+          <Route path="/service/maintenance-&-amc" component={ServiceDetails} />
+          <Route path="/service/wireless-cctv-systems" component={ServiceDetails} />
+          <Route path="/service/access-control-systems" component={ServiceDetails} />
+          <Route path="/service/fire-alarm-systems" component={ServiceDetails} />
           <Route path="/portfolio" component={Portfolio} />
           <Route path="/process" component={Process} />
           <Route path="/contact" component={Contact} />

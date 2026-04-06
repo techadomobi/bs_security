@@ -1,4 +1,4 @@
-import { useParams, Link } from "wouter";
+import { useLocation, Link } from "wouter";
 import { motion } from "framer-motion";
 import {
   Camera, Building2, Home as HomeIcon, Server, Wrench, Wifi,
@@ -289,10 +289,163 @@ const testimonials = [
   },
 ];
 
+const servicePathById: Record<string, string> = {
+  "cctv-installation": "cctv-camera-installation",
+  "commercial-security": "commercial-security",
+  "home-security": "home-security-systems",
+  "dvr-nvr-setup": "dvr/nvr-setup-&-repair",
+  "maintenance-amc": "maintenance-&-amc",
+  "wireless-cctv": "wireless-cctv-systems",
+  "access-control": "access-control-systems",
+  "fire-alarm": "fire-alarm-systems",
+};
+
+type ServiceStory = {
+  summary: string;
+  longDescription: string;
+  outcomes: Array<{ title: string; desc: string }>;
+  deliverables: string[];
+  siteChecks: string[];
+  useCases: Array<{ title: string; desc: string }>;
+  faqs: Array<{ q: string; a: string }>;
+};
+
+const serviceStoryById: Record<string, ServiceStory> = {
+  "cctv-installation": {
+    summary: "This service is built around one goal: give you reliable visibility where it matters most. We plan the camera layout, wiring path, storage, and remote access so the final setup works in daily use, not just on installation day.",
+    longDescription: "For CCTV installation, the value is not only in the number of cameras. The real outcome is consistent coverage, easy playback, clean wiring, and a system that the owner can actually use without confusion. We start with the property layout, then map the blind spots, entry points, lighting conditions, and viewing angles before we decide the final design. That gives you a system that feels intentional rather than improvised.",
+    outcomes: [
+      { title: "Clear entry coverage", desc: "Focus on gates, doors, stairwells, and parking areas first so the most important areas are protected." },
+      { title: "Cleaner installation", desc: "Cable paths, mounting points, and power access are planned in advance to keep the setup neat and maintainable." },
+      { title: "Better daily use", desc: "The system is configured for real-world viewing, playback, and mobile access instead of only raw camera output." },
+    ],
+    deliverables: ["Site survey and camera mapping", "Camera mounting and cable routing", "Recorder setup and storage configuration", "Mobile app access and playback training"],
+    siteChecks: ["Entry and exit points", "Lighting and night visibility", "Power availability", "Network or DVR placement"],
+    useCases: [
+      { title: "Homes and apartments", desc: "Ideal for entrances, balconies, lift lobbies, and parking bays where visibility is often limited." },
+      { title: "Retail shops", desc: "Useful for counters, shelves, cash handling points, and storage access." },
+      { title: "Small offices", desc: "Covers reception areas, server corners, and employee entry points without overcomplicating the setup." },
+    ],
+    faqs: [
+      { q: "How do you decide where the cameras should go?", a: "We start with a site survey, then map the key entry points, blind spots, and movement paths before choosing the final positions." },
+      { q: "Can I watch recordings on my phone?", a: "Yes. We configure the mobile app, test remote access, and show you how to review live view and playback." },
+      { q: "Will the installation look messy?", a: "No. Cable routing, junction points, and camera placement are planned to keep the installation clean and serviceable." },
+    ],
+  },
+  "commercial-security": {
+    summary: "Commercial security needs scale, uptime, and clear handoff between teams. This page is about designing surveillance that can support staff movement, asset monitoring, and incident review without creating extra maintenance overhead.",
+    longDescription: "Commercial sites usually need more than just camera coverage. They need a system that can support security staff, operations staff, and sometimes management review. That means the installation has to be practical for day-to-day use, easy to expand later, and stable enough to handle long recording hours. We plan the layout around the business flow so the system keeps working when the site gets busier.",
+    outcomes: [
+      { title: "Scalable coverage", desc: "The layout is planned so the system can grow as the site expands or new zones are added." },
+      { title: "Operational visibility", desc: "We focus on entrances, exits, loading areas, and shared spaces where activity matters most." },
+      { title: "Simple handoff", desc: "Security teams can review footage, handle alerts, and manage access without a steep learning curve." },
+    ],
+    deliverables: ["Coverage plan for key business zones", "Enterprise-grade recorder and storage setup", "Integration with access or alert systems", "Staff handover and review workflow training"],
+    siteChecks: ["Shift patterns and peak movement", "Reception and access points", "Loading or stock movement areas", "Storage and retention requirements"],
+    useCases: [
+      { title: "Offices", desc: "Reception, corridors, meeting room entries, and work floors are the usual focus areas." },
+      { title: "Warehouses", desc: "Good for loading bays, inventory aisles, perimeter gates, and storage zones." },
+      { title: "Showrooms", desc: "Useful for customer flow, display areas, payment counters, and after-hours security." },
+    ],
+    faqs: [
+      { q: "Can this integrate with access control?", a: "Yes. We can coordinate cameras with entry systems, card readers, and door controls where needed." },
+      { q: "Do you support multi-camera business sites?", a: "Yes. The system is designed around multi-zone coverage and can scale as your site expands." },
+      { q: "How do you keep downtime low?", a: "We plan the installation and testing in stages so the business can keep operating while the system is being upgraded." },
+    ],
+  },
+  "home-security": {
+    summary: "Home security should feel practical, not technical. This service is centered on making the house easier to monitor, easier to manage from a phone, and harder to approach unnoticed.",
+    longDescription: "A good home security setup needs to feel simple for the family and serious for the property. We look at how residents move through the space, where visitors arrive, and where you would want instant visibility if something looked wrong. The result should be a system you can check quickly, trust on a daily basis, and maintain without turning it into a technical chore.",
+    outcomes: [
+      { title: "Family-focused coverage", desc: "We prioritize gates, front doors, parking, and common access points where people actually enter the home." },
+      { title: "Mobile peace of mind", desc: "Remote access and alerts are set up so you can check in quickly when you are away." },
+      { title: "Low-fuss operation", desc: "The setup is tuned for everyday family use, not just for a technical operator." },
+    ],
+    deliverables: ["Entrance and perimeter plan", "Mobile viewing and alert setup", "Camera alignment for family spaces", "Training for household users"],
+    siteChecks: ["Main gate and entry path", "Parking or driveway area", "Balcony and terrace exposure", "Indoor blind spots and corners"],
+    useCases: [
+      { title: "Apartments", desc: "Best for corridor entries, lift areas, and parking access points." },
+      { title: "Independent homes", desc: "Useful for gate, porch, terrace, side passage, and backyard coverage." },
+      { title: "Gated communities", desc: "Helps track visitors, deliveries, and movement around shared approaches." },
+    ],
+    faqs: [
+      { q: "Can this work in a smaller apartment setup?", a: "Yes. We tailor the camera count and placement to fit the layout instead of forcing a large package." },
+      { q: "Will family members be able to use it easily?", a: "Yes. We set it up with clear app access and walk through the basic controls during handover." },
+      { q: "What if I already have some cameras installed?", a: "We can assess the existing setup and expand or repair it as needed." },
+    ],
+  },
+  "dvr-nvr-setup": {
+    summary: "This service is the technical backbone of the security system. When recorders are unstable, storage is failing, or remote access breaks, the whole setup feels unreliable. We fix that by restoring the recording, retrieval, and backup layer first.",
+    longDescription: "Recorder work is often invisible until something goes wrong, which is why it has such an outsized impact on the rest of the system. If the DVR or NVR is not configured properly, even good cameras can feel useless. We check the recording schedule, storage health, playback behavior, firmware, and remote connectivity so the recorder becomes dependable again instead of being a point of failure.",
+    outcomes: [
+      { title: "Recovered recording", desc: "We troubleshoot storage, playback, and device pairing so footage becomes accessible again." },
+      { title: "Better stability", desc: "Firmware, disk health, and connection issues are checked to reduce repeat failures." },
+      { title: "Cleaner remote access", desc: "We reconfigure mobile and web access so the system can be used reliably from outside the site." },
+    ],
+    deliverables: ["DVR/NVR diagnosis and health check", "Storage and recording repair", "Remote access and network setup", "Backup configuration and handover"],
+    siteChecks: ["Existing recording quality", "Hard disk status and capacity", "Network router and IP setup", "Playback and export workflow"],
+    useCases: [
+      { title: "Faulty recorders", desc: "Ideal when a DVR or NVR is not recording correctly or restarts unexpectedly." },
+      { title: "Storage upgrades", desc: "Useful when you need more retention time or better disk reliability." },
+      { title: "Older installations", desc: "Good for systems that need a clean reset, calibration, or brand-agnostic repair." },
+    ],
+    faqs: [
+      { q: "Can you work on different brands?", a: "Yes. We routinely handle common recorder brands and mixed legacy setups." },
+      { q: "What if the hard disk has failed?", a: "We test the storage layer first, then replace or reconfigure the disk if needed." },
+      { q: "Can remote viewing be restored?", a: "In many cases, yes. We check network settings, app pairing, and device authorization." },
+    ],
+  },
+  "maintenance-amc": {
+    summary: "Maintenance is what keeps a good security system from quietly drifting into failure. This service is built around routine checks, fast response, and small adjustments that prevent bigger problems later.",
+    longDescription: "An AMC is valuable because most security systems do not fail all at once. They degrade slowly through dust, loose connections, changed angles, stale firmware, and storage issues. Maintenance keeps the system visible, predictable, and ready when it matters. It also means someone is responsible for looking after the setup instead of waiting for the owner to notice a problem after the fact.",
+    outcomes: [
+      { title: "Fewer surprises", desc: "Regular inspections catch weak points before they become outages or blind spots." },
+      { title: "Faster support", desc: "Priority attention means issues are handled with less waiting and less disruption." },
+      { title: "Longer system life", desc: "Cleaning, calibration, and firmware upkeep help equipment stay reliable for longer." },
+    ],
+    deliverables: ["Scheduled health checks", "Camera cleaning and re-alignment", "Firmware and configuration review", "Priority repair response"],
+    siteChecks: ["Camera focus and angle drift", "Cable wear and loose fittings", "Recorder health and storage", "Mobile app and remote access status"],
+    useCases: [
+      { title: "Existing camera systems", desc: "Best for sites that already have working equipment but need consistent upkeep." },
+      { title: "Busy households", desc: "Useful when the system must stay dependable without the owner constantly troubleshooting it." },
+      { title: "Commercial sites", desc: "Helps shops, offices, and warehouses avoid gaps in coverage during daily operations." },
+    ],
+    faqs: [
+      { q: "What does AMC usually include?", a: "Typically inspections, cleaning, calibration, basic troubleshooting, and system health checks based on the contract." },
+      { q: "Is maintenance only for your installations?", a: "No. We can also support many third-party systems after a compatibility check." },
+      { q: "Why is AMC worth it?", a: "It reduces unexpected failures and keeps the system working the way it should after installation." },
+    ],
+  },
+};
+
+const defaultStory: ServiceStory = {
+  summary: "This service is designed to turn a technical requirement into a practical security setup that is easier to use, maintain, and trust day to day.",
+  longDescription: "Every property has different weak points, and every useful security installation has to respond to that reality. The goal is not just to add equipment. It is to build a system that fits the space, remains easy to manage, and keeps delivering value after the initial setup is complete.",
+  outcomes: [
+    { title: "Practical planning", desc: "The layout is matched to the property and the way people actually move through it." },
+    { title: "Reliable operation", desc: "Configuration and handover are done so the system can be used without guesswork." },
+    { title: "Clear support", desc: "The installation is followed by guidance so the owner knows what to expect next." },
+  ],
+  deliverables: ["Initial assessment and recommendation", "Install and configuration", "User handover and testing", "Support plan and follow-up"],
+  siteChecks: ["Property layout", "Power and network access", "Primary risk areas", "Operational needs"],
+  useCases: [
+    { title: "Residential properties", desc: "Good for homes that need a simple and dependable security layer." },
+    { title: "Business spaces", desc: "Useful where ongoing monitoring and accountability matter." },
+    { title: "Upgrades and repairs", desc: "A solid fit when an existing setup needs improvement rather than replacement." },
+  ],
+  faqs: [
+    { q: "How do I know what package I need?", a: "We start with the site and recommend the setup based on layout, risk areas, and budget." },
+    { q: "Can you adjust the system later?", a: "Yes. Most systems can be expanded, repaired, or refined after the initial install." },
+    { q: "Do you provide post-install support?", a: "Yes. We explain the system and remain available if follow-up adjustments are needed." },
+  ],
+};
+
 export default function ServiceDetails() {
-  const params = useParams();
-  const serviceId = params?.id;
-  const service = serviceDetails.find(s => s.id === serviceId);
+  const [location] = useLocation();
+  const servicePath = location.replace(/\/$/, "").replace(/^\/service\//, "");
+  const service = serviceDetails.find((entry) => servicePathById[entry.id] === servicePath);
+
+  const story = service ? (serviceStoryById[service.id] ?? defaultStory) : defaultStory;
 
   if (!service) {
     return (
@@ -425,6 +578,70 @@ export default function ServiceDetails() {
                       </li>
                       <li className="flex items-center gap-2 text-sm">
                         <CheckCircle className="w-4 h-4 text-green-500" />
+
+                  {/* Service Breakdown */}
+                  <section className="py-16 bg-gray-50">
+                    <div className="container mx-auto px-4 md:px-6">
+                      <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+                        <div>
+                          <FadeIn>
+                            <p className="text-primary font-semibold text-sm uppercase tracking-wider mb-3">Service Breakdown</p>
+                            <SlideReveal>
+                              <h2 className="text-3xl font-bold mb-4">What this service actually covers</h2>
+                            </SlideReveal>
+                            <p className="text-gray-700 leading-relaxed mb-6">{story.longDescription}</p>
+                            <div className="space-y-4">
+                              {story.deliverables.map((item, index) => (
+                                <motion.div
+                                  key={item}
+                                  className="flex items-start gap-3"
+                                  initial={{ opacity: 0, x: -10 }}
+                                  whileInView={{ opacity: 1, x: 0 }}
+                                  viewport={{ once: true }}
+                                  transition={{ delay: index * 0.08 }}
+                                >
+                                  <CheckCircle className="w-5 h-5 text-green-500 shrink-0 mt-0.5" />
+                                  <span className="text-gray-700">{item}</span>
+                                </motion.div>
+                              ))}
+                            </div>
+                          </FadeIn>
+                        </div>
+                        <div>
+                          <FadeIn delay={0.2}>
+                            <Card className="h-full border border-border/50 shadow-sm">
+                              <CardHeader>
+                                <CardTitle className="flex items-center gap-3">
+                                  <ShieldCheck className="w-5 h-5 text-blue-600" />
+                                  Before We Start
+                                </CardTitle>
+                              </CardHeader>
+                              <CardContent>
+                                <div className="space-y-4">
+                                  {story.siteChecks.map((item, index) => (
+                                    <motion.div
+                                      key={item}
+                                      className="flex gap-3 items-start"
+                                      initial={{ opacity: 0, y: 8 }}
+                                      whileInView={{ opacity: 1, y: 0 }}
+                                      viewport={{ once: true }}
+                                      transition={{ delay: index * 0.08 }}
+                                    >
+                                      <div className="w-2 h-2 rounded-full bg-blue-600 mt-2 shrink-0" />
+                                      <div>
+                                        <div className="font-medium text-gray-900">{item}</div>
+                                        <div className="text-sm text-gray-600">Checked during the site visit so the final plan fits the property accurately.</div>
+                                      </div>
+                                    </motion.div>
+                                  ))}
+                                </div>
+                              </CardContent>
+                            </Card>
+                          </FadeIn>
+                        </div>
+                      </div>
+                    </div>
+                  </section>
                         Secure cloud storage
                       </li>
                       <li className="flex items-center gap-2 text-sm">
@@ -549,6 +766,105 @@ export default function ServiceDetails() {
                 </FadeIn>
               </div>
             </div>
+          </div>
+        </section>
+
+        {/* Why This Service Matters */}
+        <section className="py-16 bg-slate-50">
+          <div className="container mx-auto px-4 md:px-6">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
+              <div>
+                <FadeIn>
+                  <p className="text-primary font-semibold text-sm uppercase tracking-wider mb-3">Why It Matters</p>
+                  <SlideReveal>
+                    <h2 className="text-3xl md:text-4xl font-bold font-display mb-4">A service page that explains the real value, not just the checklist</h2>
+                  </SlideReveal>
+                  <p className="text-gray-700 text-lg leading-relaxed mb-6">
+                    {story.summary}
+                  </p>
+                  <p className="text-gray-600 leading-relaxed">
+                    For this service, the important part is not only the hardware or the parts list. It is the way the system gets planned, installed, tested, and handed over so it stays useful after the technician leaves.
+                  </p>
+                </FadeIn>
+              </div>
+              <div>
+                <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 gap-4" staggerDelay={0.08}>
+                  {story.outcomes.map((item) => (
+                    <StaggerItem key={item.title} direction="scale">
+                      <Card className="h-full border border-border/50 shadow-sm bg-white">
+                        <CardContent className="p-6">
+                          <div className="w-11 h-11 rounded-xl bg-primary/10 flex items-center justify-center mb-4">
+                            <ShieldCheck className="w-5 h-5 text-primary" />
+                          </div>
+                          <h3 className="font-bold text-gray-900 mb-2">{item.title}</h3>
+                          <p className="text-sm text-gray-600 leading-relaxed">{item.desc}</p>
+                        </CardContent>
+                      </Card>
+                    </StaggerItem>
+                  ))}
+                </StaggerContainer>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Best Use Cases */}
+        <section className="py-16 bg-white">
+          <div className="container mx-auto px-4 md:px-6">
+            <div className="text-center max-w-3xl mx-auto mb-14">
+              <FadeIn>
+                <p className="text-primary font-semibold text-sm uppercase tracking-wider mb-3">Best Use Cases</p>
+                <SlideReveal>
+                  <h2 className="text-3xl md:text-4xl font-bold font-display mb-4">Where this setup works best</h2>
+                </SlideReveal>
+                <p className="text-lg text-gray-600">
+                  These are the situations where the service usually gives the most practical value and the clearest day-to-day benefit.
+                </p>
+              </FadeIn>
+            </div>
+
+            <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-8" staggerDelay={0.1}>
+              {story.useCases.map((item) => (
+                <StaggerItem key={item.title} direction="up">
+                  <AnimatedCard>
+                    <Card className="h-full border border-border/50 shadow-sm bg-slate-50">
+                      <CardContent className="p-7">
+                        <div className="text-primary font-semibold text-sm uppercase tracking-wider mb-3">Use Case</div>
+                        <h3 className="text-xl font-bold text-gray-900 mb-3">{item.title}</h3>
+                        <p className="text-gray-600 leading-relaxed">{item.desc}</p>
+                      </CardContent>
+                    </Card>
+                  </AnimatedCard>
+                </StaggerItem>
+              ))}
+            </StaggerContainer>
+          </div>
+        </section>
+
+        {/* FAQs */}
+        <section className="py-16 bg-slate-50">
+          <div className="container mx-auto px-4 md:px-6">
+            <div className="text-center max-w-3xl mx-auto mb-14">
+              <FadeIn>
+                <p className="text-primary font-semibold text-sm uppercase tracking-wider mb-3">Common Questions</p>
+                <SlideReveal>
+                  <h2 className="text-3xl md:text-4xl font-bold font-display mb-4">Questions people usually ask before they decide</h2>
+                </SlideReveal>
+              </FadeIn>
+            </div>
+
+            <StaggerContainer className="grid grid-cols-1 lg:grid-cols-3 gap-6" staggerDelay={0.08}>
+              {story.faqs.map((faq) => (
+                <StaggerItem key={faq.q} direction="scale">
+                  <Card className="h-full border border-border/50 shadow-sm bg-white">
+                    <CardContent className="p-7">
+                      <h3 className="font-bold text-gray-900 mb-3">{faq.q}</h3>
+                      <p className="text-gray-600 leading-relaxed">{faq.a}</p>
+                    </CardContent>
+                  </Card>
+                </StaggerItem>
+              ))}
+            </StaggerContainer>
           </div>
         </section>
 
