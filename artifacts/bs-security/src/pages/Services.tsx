@@ -19,6 +19,8 @@ const services = [
   { icon: Server, title: "DVR/NVR Setup & Repair", desc: "Expert installation and repair for all recording systems. We configure DVRs and NVRs for optimal storage, set up remote access, perform hard disk upgrades, and troubleshoot any existing system.", highlights: ["All brands supported (Hikvision, Dahua, CP Plus)", "Hard disk upgrade & replacement", "Remote access configuration", "Firmware updates & security patching", "Backup & data recovery", "Same-day repair available"], suitedFor: "Existing systems, upgrades, repairs" },
   { icon: Wrench, title: "Maintenance & AMC", desc: "Keep your security system running at 100% with our Annual Maintenance Contracts. Regular servicing, priority support, and proactive issue resolution — so you never have a blind spot.", highlights: ["Quarterly health check visits", "Priority response within 4 hours", "Lens cleaning & calibration", "Firmware & software updates", "Camera realignment", "Free minor repairs included"], suitedFor: "All existing B.S. Security & third-party systems" },
   { icon: Wifi, title: "Wireless CCTV Systems", desc: "No drilling, no messy cables — modern wireless IP cameras with full HD quality. Perfect for rented properties, heritage buildings, or anywhere cable routing is impractical.", highlights: ["No wiring required", "Wi-Fi & 4G/LTE cameras", "Quick same-day installation", "Battery-powered options", "Flexible camera repositioning", "Cloud storage compatible"], suitedFor: "Rented properties, temporary setups, add-ons" },
+  { icon: Users, title: "Access Control Systems", desc: "Secure your premises with advanced access control solutions. We install and integrate card readers, biometric scanners, and smart locks to manage entry points efficiently.", highlights: ["Biometric fingerprint scanners", "RFID card readers", "Smart lock integration", "Multi-door control panels", "Audit trail logging", "Remote access management"], suitedFor: "Offices, residential buildings, data centers" },
+  { icon: Zap, title: "Fire Alarm Systems", desc: "Protect lives and property with reliable fire detection and alarm systems. We provide complete fire safety solutions from detection to notification.", highlights: ["Smoke and heat detectors", "Manual call points", "Sounders and strobes", "Control panels", "Emergency lighting", "Regular testing and certification"], suitedFor: "Commercial buildings, schools, hospitals" },
 ];
 
 const features = [
@@ -136,6 +138,13 @@ export default function Services() {
                               </motion.li>
                             ))}
                           </ul>
+                        </div>
+                        <div className="pt-4 border-t border-border/50">
+                          <Link href={`/service/${service.title.toLowerCase().replace(/\s+/g, '-')}`}>
+                            <Button variant="outline" size="sm" className="w-full">
+                              View Details
+                            </Button>
+                          </Link>
                         </div>
                         <div className="pt-4 border-t border-border/50">
                           <span className="text-xs text-foreground/50 font-medium">Best for: </span>
