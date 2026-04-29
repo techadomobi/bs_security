@@ -12,6 +12,7 @@ import {
   AnimatedCard, AnimatedIcon, BlobBackground, PulseGlow, PageTransition,
   RevealLine, ProgressBar, ScaleOnHover, TypeWriter, SlideReveal, RotatingBadge
 } from "@/components/animations";
+import { locationRoutes, locations } from "@/data/locations";
 
 const services = [
   { icon: Camera, title: "CCTV Camera Installation", desc: "Indoor and outdoor HD/IP camera setup with professional wiring and installation for homes, shops, and offices." },
@@ -39,21 +40,7 @@ const reasons = [
 ];
 
 const brands = ["Hikvision", "Dahua", "CP Plus", "Bosch", "Honeywell", "Axis"];
-const serviceAreas = ["Green Park", "Hauz Khas", "Safdarjung", "Malviya Nagar", "AIIMS Area", "South Delhi", "Vasant Kunj", "Mehrauli", "Chattarpur", "Saket", "Greater Kailash", "Defence Colony"];
-const areaRoutes: Record<string, string> = {
-  "Green Park": "/green-park",
-  "Hauz Khas": "/hauz-khas",
-  "Safdarjung": "/safdarjung",
-  "Malviya Nagar": "/malviya-nagar",
-  "AIIMS Area": "/aiims-area",
-  "South Delhi": "/south-delhi",
-  "Vasant Kunj": "/vasant-kunj",
-  "Mehrauli": "/mehrauli",
-  "Chattarpur": "/chattarpur",
-  "Saket": "/saket",
-  "Greater Kailash": "/greater-kailash",
-  "Defence Colony": "/defence-colony",
-};
+const serviceAreas = locations.map((location) => location.name);
 
 const statsData = [
   { value: 500, suffix: "+", label: "Happy Clients", icon: Users },
@@ -594,7 +581,7 @@ export default function Home() {
                     {serviceAreas.map((area) => {
                       return (
                         <StaggerItem key={area} direction="scale">
-                          <Link href={areaRoutes[area]}>
+                          <Link href={locationRoutes[area]}>
                             <motion.div
                               className="flex items-center gap-1.5 px-4 py-2 rounded-full bg-slate-100 text-sm font-medium text-foreground/70 cursor-pointer hover:bg-primary/10 hover:text-primary transition"
                               whileHover={{ scale: 1.06 }}
