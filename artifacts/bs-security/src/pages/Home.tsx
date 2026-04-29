@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link } from "wouter";
 import { motion } from "framer-motion";
 import {
   ShieldCheck, Camera, Building2, Home as HomeIcon, Server, Wrench, Wifi,
@@ -40,6 +40,20 @@ const reasons = [
 
 const brands = ["Hikvision", "Dahua", "CP Plus", "Bosch", "Honeywell", "Axis"];
 const serviceAreas = ["Green Park", "Hauz Khas", "Safdarjung", "Malviya Nagar", "AIIMS Area", "South Delhi", "Vasant Kunj", "Mehrauli", "Chattarpur", "Saket", "Greater Kailash", "Defence Colony"];
+const areaRoutes: Record<string, string> = {
+  "Green Park": "/green-park",
+  "Hauz Khas": "/hauz-khas",
+  "Safdarjung": "/safdarjung",
+  "Malviya Nagar": "/malviya-nagar",
+  "AIIMS Area": "/aiims-area",
+  "South Delhi": "/south-delhi",
+  "Vasant Kunj": "/vasant-kunj",
+  "Mehrauli": "/mehrauli",
+  "Chattarpur": "/chattarpur",
+  "Saket": "/saket",
+  "Greater Kailash": "/greater-kailash",
+  "Defence Colony": "/defence-colony",
+};
 
 const statsData = [
   { value: 500, suffix: "+", label: "Happy Clients", icon: Users },
@@ -139,7 +153,7 @@ export default function Home() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.7, delay: 0.65 }}
               >
-                <Link to="/contact">
+                <Link href="/contact">
                   <PulseGlow>
                     <Button size="lg" className="w-full sm:w-auto rounded-full px-10 h-14 text-base shadow-lg shadow-primary/30 hover:shadow-xl hover:shadow-primary/40 transition-all" data-testid="button-hero-book">
                       Book Free Survey
@@ -264,7 +278,7 @@ export default function Home() {
             <FadeIn delay={0.4}>
               <div className="text-center">
                 <ScaleOnHover>
-                  <Link to="/services">
+                  <Link href="/services">
                     <Button variant="outline" size="lg" className="rounded-full border-2 px-10" data-testid="button-view-all-services">
                       View All Services in Detail
                       <ArrowRight className="ml-2 w-4 h-4" />
@@ -396,7 +410,7 @@ export default function Home() {
               </FadeIn>
               <FadeIn direction="left">
                 <ScaleOnHover>
-                  <Link to="/portfolio">
+                  <Link href="/portfolio">
                     <Button variant="outline" className="rounded-full border-2 px-6 whitespace-nowrap" data-testid="button-view-portfolio">
                       Full Portfolio <ArrowRight className="ml-2 w-4 h-4" />
                     </Button>
@@ -480,7 +494,7 @@ export default function Home() {
             <FadeIn delay={0.4}>
               <div className="text-center">
                 <ScaleOnHover>
-                  <Link to="/process">
+                  <Link href="/process">
                     <Button variant="outline" size="lg" className="rounded-full border-2 px-8" data-testid="button-full-process">
                       View Full Process <ArrowRight className="ml-2 w-4 h-4" />
                     </Button>
@@ -578,11 +592,9 @@ export default function Home() {
                   </p>
                   <StaggerContainer className="flex flex-wrap gap-3 mb-8" staggerDelay={0.06}>
                     {serviceAreas.map((area) => {
-                      // Convert area name to URL-friendly slug
-                      const slug = area.toLowerCase().replace(/ /g, "").replace(/[^a-z]/g, "");
                       return (
                         <StaggerItem key={area} direction="scale">
-                          <Link to={`/${slug}`}>
+                          <Link href={areaRoutes[area]}>
                             <motion.div
                               className="flex items-center gap-1.5 px-4 py-2 rounded-full bg-slate-100 text-sm font-medium text-foreground/70 cursor-pointer hover:bg-primary/10 hover:text-primary transition"
                               whileHover={{ scale: 1.06 }}
@@ -656,7 +668,7 @@ export default function Home() {
                 Book a free, no-obligation site survey today. Our expert will visit, assess, and design the perfect security solution at no cost.
               </p>
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                <Link to="/contact">
+                <Link href="/contact">
                   <PulseGlow>
                     <Button size="lg" variant="secondary" className="rounded-full px-10 h-14 text-base font-semibold" data-testid="button-cta-book">
                       Book Free Survey
