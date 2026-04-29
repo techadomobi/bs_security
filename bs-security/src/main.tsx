@@ -12,6 +12,12 @@ import MalviyaNagar from "./pages/MalviyaNagar";
 import Rajpur from "./pages/Rajpur";
 import Sultanpur from "./pages/Sultanpur";
 import Khanpur from "./pages/Khanpur";
+import Safdarjung from "./pages/Safdarjung";
+import AIIMSArea from "./pages/AIIMSArea";
+import SouthDelhi from "./pages/SouthDelhi";
+import Mehrauli from "./pages/Mehrauli";
+import GreaterKailash from "./pages/GreaterKailash";
+import DefenceColony from "./pages/DefenceColony";
 
 const App = () => (
   <BrowserRouter>
@@ -27,6 +33,12 @@ const App = () => (
       <Route path="/rajpur" element={<Rajpur />} />
       <Route path="/sultanpur" element={<Sultanpur />} />
       <Route path="/khanpur" element={<Khanpur />} />
+      <Route path="/safdarjung" element={<Safdarjung />} />
+      <Route path="/aiimsarea" element={<AIIMSArea />} />
+      <Route path="/southdelhi" element={<SouthDelhi />} />
+      <Route path="/mehrauli" element={<Mehrauli />} />
+      <Route path="/greaterkailash" element={<GreaterKailash />} />
+      <Route path="/defencecolony" element={<DefenceColony />} />
     </Routes>
   </BrowserRouter>
 );
