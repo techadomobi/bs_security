@@ -1,4 +1,4 @@
-import { Link } from "wouter";
+import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import {
   ShieldCheck, Camera, Building2, Home as HomeIcon, Server, Wrench, Wifi,
@@ -139,7 +139,7 @@ export default function Home() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.7, delay: 0.65 }}
               >
-                <Link href="/contact">
+                <Link to="/contact">
                   <PulseGlow>
                     <Button size="lg" className="w-full sm:w-auto rounded-full px-10 h-14 text-base shadow-lg shadow-primary/30 hover:shadow-xl hover:shadow-primary/40 transition-all" data-testid="button-hero-book">
                       Book Free Survey
@@ -264,7 +264,7 @@ export default function Home() {
             <FadeIn delay={0.4}>
               <div className="text-center">
                 <ScaleOnHover>
-                  <Link href="/services">
+                  <Link to="/services">
                     <Button variant="outline" size="lg" className="rounded-full border-2 px-10" data-testid="button-view-all-services">
                       View All Services in Detail
                       <ArrowRight className="ml-2 w-4 h-4" />
@@ -307,7 +307,7 @@ export default function Home() {
                     ))}
                   </div>
                   <ScaleOnHover>
-                    <Link href="/process">
+                    <Link to="/process">
                       <Button variant="outline" size="lg" className="rounded-full border-2 px-8" data-testid="button-how-we-work">
                         See How We Work <ArrowRight className="ml-2 w-4 h-4" />
                       </Button>
@@ -396,7 +396,7 @@ export default function Home() {
               </FadeIn>
               <FadeIn direction="left">
                 <ScaleOnHover>
-                  <Link href="/portfolio">
+                  <Link to="/portfolio">
                     <Button variant="outline" className="rounded-full border-2 px-6 whitespace-nowrap" data-testid="button-view-portfolio">
                       Full Portfolio <ArrowRight className="ml-2 w-4 h-4" />
                     </Button>
@@ -480,7 +480,7 @@ export default function Home() {
             <FadeIn delay={0.4}>
               <div className="text-center">
                 <ScaleOnHover>
-                  <Link href="/process">
+                  <Link to="/process">
                     <Button variant="outline" size="lg" className="rounded-full border-2 px-8" data-testid="button-full-process">
                       View Full Process <ArrowRight className="ml-2 w-4 h-4" />
                     </Button>
@@ -577,17 +577,23 @@ export default function Home() {
                     Based in Vasant Kunj, our team covers all major areas of South Delhi with prompt on-site visits.
                   </p>
                   <StaggerContainer className="flex flex-wrap gap-3 mb-8" staggerDelay={0.06}>
-                    {serviceAreas.map((area) => (
-                      <StaggerItem key={area} direction="scale">
-                        <motion.div
-                          className="flex items-center gap-1.5 px-4 py-2 rounded-full bg-slate-100 text-sm font-medium text-foreground/70"
-                          whileHover={{ scale: 1.06, backgroundColor: "rgba(37,99,235,0.1)", color: "rgb(37,99,235)" }}
-                        >
-                          <MapPin className="w-3 h-3 text-primary" />
-                          {area}
-                        </motion.div>
-                      </StaggerItem>
-                    ))}
+                    {serviceAreas.map((area) => {
+                      // Convert area name to URL-friendly slug
+                      const slug = area.toLowerCase().replace(/ /g, "").replace(/[^a-z]/g, "");
+                      return (
+                        <StaggerItem key={area} direction="scale">
+                          <Link to={`/${slug}`}>
+                            <motion.div
+                              className="flex items-center gap-1.5 px-4 py-2 rounded-full bg-slate-100 text-sm font-medium text-foreground/70 cursor-pointer hover:bg-primary/10 hover:text-primary transition"
+                              whileHover={{ scale: 1.06 }}
+                            >
+                              <MapPin className="w-3 h-3 text-primary" />
+                              {area}
+                            </motion.div>
+                          </Link>
+                        </StaggerItem>
+                      );
+                    })}
                   </StaggerContainer>
                   <ScaleOnHover>
                     <a href="tel:+919193232403">
@@ -650,7 +656,7 @@ export default function Home() {
                 Book a free, no-obligation site survey today. Our expert will visit, assess, and design the perfect security solution at no cost.
               </p>
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                <Link href="/contact">
+                <Link to="/contact">
                   <PulseGlow>
                     <Button size="lg" variant="secondary" className="rounded-full px-10 h-14 text-base font-semibold" data-testid="button-cta-book">
                       Book Free Survey
