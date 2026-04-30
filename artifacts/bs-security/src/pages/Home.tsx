@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import {
   ShieldCheck, Camera, Building2, Home as HomeIcon, Server, Wrench, Wifi,
   Phone, ArrowRight, Award, Clock, ThumbsUp, Video, Star,
-  CheckCircle, MapPin, Users, Zap, HeadphonesIcon
+  CheckCircle, MapPin, Users, Zap, HeadphonesIcon, MessageCircle
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -62,6 +62,27 @@ export default function Home() {
   return (
     <PageTransition>
       <div className="min-h-screen bg-background text-foreground overflow-x-hidden font-sans">
+        <div className="fixed right-4 bottom-4 z-50 flex flex-col items-end gap-3 md:right-6 md:bottom-6">
+          <div className="rounded-full bg-white px-4 py-2 text-sm font-semibold text-slate-700 shadow-lg ring-1 ring-slate-200">
+            9193232403
+          </div>
+          <a
+            href="tel:+919193232403"
+            aria-label="Call 9193232403"
+            className="flex h-16 w-16 items-center justify-center rounded-full bg-orange-500 text-white shadow-[0_10px_30px_rgba(249,115,22,0.35)] ring-4 ring-white transition-transform hover:scale-105"
+          >
+            <Phone className="h-8 w-8" />
+          </a>
+          <a
+            href="https://wa.me/919193232403"
+            target="_blank"
+            rel="noreferrer"
+            aria-label="WhatsApp 9193232403"
+            className="flex h-16 w-16 items-center justify-center rounded-full bg-green-500 text-white shadow-[0_10px_30px_rgba(34,197,94,0.35)] ring-4 ring-white transition-transform hover:scale-105"
+          >
+            <MessageCircle className="h-8 w-8" />
+          </a>
+        </div>
 
         {/* ─── HERO ───────────────────────────────────────────────────── */}
         <section className="relative pt-32 pb-24 md:pt-52 md:pb-36 overflow-hidden">
