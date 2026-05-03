@@ -39,10 +39,8 @@ export default function Navbar() {
       >
         <div className="container mx-auto px-4 md:px-6 flex items-center justify-between">
           <Link href="/" className="flex items-center gap-2">
-            <ShieldCheck className="h-8 w-8 text-primary" />
-            <span className="font-display font-bold text-xl md:text-2xl text-foreground tracking-tight">
-              B.S. Security
-            </span>
+            <img src="/images/logo.png" alt="B.S. Security logo" className="h-8 w-auto" />
+            <span className="sr-only">B.S. Security</span>
           </Link>
 
           <div className="hidden lg:flex items-center gap-8">
