@@ -40,7 +40,7 @@ const reasons = [
 ];
 
 const brands = ["Hikvision", "Dahua", "CP Plus", "Bosch", "Honeywell", "Axis"];
-const serviceAreas = locations.map((location) => location.name);
+const serviceAreas = locations.map((location) => `${location.name}-Delhi`);
 
 const statsData = [
   { value: 500, suffix: "+", label: "Happy Clients", icon: Users },
@@ -600,9 +600,10 @@ export default function Home() {
                   </p>
                   <StaggerContainer className="flex flex-wrap gap-3 mb-8" staggerDelay={0.06}>
                     {serviceAreas.map((area) => {
+                      const areaName = area.replace("-Delhi", "");
                       return (
                         <StaggerItem key={area} direction="scale">
-                          <Link href={locationRoutes[area]}>
+                          <Link href={locationRoutes[areaName]}>
                             <motion.div
                               className="flex items-center gap-1.5 px-4 py-2 rounded-full bg-slate-100 text-sm font-medium text-foreground/70 cursor-pointer hover:bg-primary/10 hover:text-primary transition"
                               whileHover={{ scale: 1.06 }}
