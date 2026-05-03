@@ -1,5 +1,6 @@
 import { Link } from "wouter";
 import { ShieldCheck, ChevronRight } from "lucide-react";
+import logo from "/images/logo.png";
 
 const footerLinks = [
   { label: "Home", href: "/" },
@@ -24,7 +25,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
           <div>
             <div className="flex items-center gap-2 mb-6">
-              <img src="/images/logo.png" alt="B.S. Security logo" className="h-6 w-auto" />
+              <img src={logo} alt="B.S. Security logo" className="h-6 w-auto" />
               <span className="sr-only">B.S. Security</span>
             </div>
             <p className="text-sm mb-6 leading-relaxed">

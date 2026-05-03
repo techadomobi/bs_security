@@ -3,6 +3,7 @@ import { Link, useLocation } from "wouter";
 import { AnimatePresence, motion } from "framer-motion";
 import { ShieldCheck, Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import logo from "/images/logo.png";
 
 const navLinks = [
   { label: "Home", href: "/" },
@@ -39,7 +40,7 @@ export default function Navbar() {
       >
         <div className="container mx-auto px-4 md:px-6 flex items-center justify-between">
           <Link href="/" className="flex items-center gap-2">
-            <img src="/images/logo.png" alt="B.S. Security logo" className="h-8 w-auto" />
+            <img src={logo} alt="B.S. Security logo" className="h-8 w-auto" />
             <span className="sr-only">B.S. Security</span>
           </Link>
 
