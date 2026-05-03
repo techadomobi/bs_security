@@ -1,6 +1,6 @@
 import { Link } from "wouter";
 import { ShieldCheck, ChevronRight } from "lucide-react";
-import logo from "/images/logo.png";
+import logo from "/images/logo_black.png";
 
 const footerLinks = [
   { label: "Home", href: "/" },
