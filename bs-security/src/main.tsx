@@ -22,23 +22,23 @@ import DefenceColony from "./pages/DefenceColony";
 const App = () => (
   <BrowserRouter>
     <Routes>
-      <Route path="/nebsarai" element={<NebSarai />} />
-      <Route path="/chhatarpur" element={<Chhatarpur />} />
-      <Route path="/saket" element={<Saket />} />
-      <Route path="/greenpark" element={<GreenPark />} />
-      <Route path="/vasantkunj" element={<VasantKunj />} />
-      <Route path="/hauzkhas" element={<HauzKhas />} />
-      <Route path="/ghitorni" element={<Ghitorni />} />
-      <Route path="/malviyanagar" element={<MalviyaNagar />} />
-      <Route path="/rajpur" element={<Rajpur />} />
-      <Route path="/sultanpur" element={<Sultanpur />} />
-      <Route path="/khanpur" element={<Khanpur />} />
-      <Route path="/safdarjung" element={<Safdarjung />} />
-      <Route path="/aiimsarea" element={<AIIMSArea />} />
-      <Route path="/southdelhi" element={<SouthDelhi />} />
-      <Route path="/mehrauli" element={<Mehrauli />} />
-      <Route path="/greaterkailash" element={<GreaterKailash />} />
-      <Route path="/defencecolony" element={<DefenceColony />} />
+      <Route path="/nebsarai-delhi" element={<NebSarai />} />
+      <Route path="/chhatarpur-delhi" element={<Chhatarpur />} />
+      <Route path="/saket-delhi" element={<Saket />} />
+      <Route path="/greenpark-delhi" element={<GreenPark />} />
+      <Route path="/vasantkunj-delhi" element={<VasantKunj />} />
+      <Route path="/hauzkhas-delhi" element={<HauzKhas />} />
+      <Route path="/ghitorni-delhi" element={<Ghitorni />} />
+      <Route path="/malviyanagar-delhi" element={<MalviyaNagar />} />
+      <Route path="/rajpur-delhi" element={<Rajpur />} />
+      <Route path="/sultanpur-delhi" element={<Sultanpur />} />
+      <Route path="/khanpur-delhi" element={<Khanpur />} />
+      <Route path="/safdarjung-delhi" element={<Safdarjung />} />
+      <Route path="/aiimsarea-delhi" element={<AIIMSArea />} />
+      <Route path="/southdelhi-delhi" element={<SouthDelhi />} />
+      <Route path="/mehrauli-delhi" element={<Mehrauli />} />
+      <Route path="/greaterkailash-delhi" element={<GreaterKailash />} />
+      <Route path="/defencecolony-delhi" element={<DefenceColony />} />
     </Routes>
   </BrowserRouter>
 );
