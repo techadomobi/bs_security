@@ -25,7 +25,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
           <div>
             <div className="flex items-center gap-3 mb-6">
-              <img src={logo} alt="B.S. Security logo" className="h-20 md:h-18 w-auto" />
+              <img src={logo} alt="B.S. Security logo" className="h-28 md:h-36 w-auto object-contain drop-shadow-[0_2px_4px_rgba(255,255,255,0.08)]" />
             </div>
             <p className="text-sm mb-6 leading-relaxed">
               Delhi's most trusted neighborhood CCTV installation and security solutions provider. Your safety is our priority.
