@@ -39,7 +39,7 @@ export const locations: LocationDetails[] = [
       { question: "Do you install systems for small properties?", answer: "Yes. We handle compact 2-camera and 4-camera setups as well as larger building coverage plans." },
       { question: "Can old cameras be reused?", answer: "If the existing cameras and recorder are in workable condition, we can often reuse part of the setup and upgrade only the weak points." },
     ],
-    nearby: ["Saket", "Chhatarpur", "Khanpur"],
+    nearby: ["Saket-Delhi", "Chhatarpur-Delhi", "Khanpur-Delhi"],
   },
   {
     slug: "chhatarpur",
@@ -65,7 +65,7 @@ export const locations: LocationDetails[] = [
       { question: "Can you secure farmhouse entry points?", answer: "Yes. We typically cover gates, boundary sides, parking zones, and staff access routes." },
       { question: "Is remote viewing included?", answer: "Yes. We configure phone access so you can check live feed and recordings from anywhere." },
     ],
-    nearby: ["Vasant Kunj", "Ghitorni", "Neb Sarai"],
+    nearby: ["Vasant Kunj-Delhi", "Ghitorni-Delhi", "Neb Sarai-Delhi"],
   },
   {
     slug: "saket",
@@ -91,7 +91,7 @@ export const locations: LocationDetails[] = [
       { question: "Can you upgrade an old DVR system in Saket?", answer: "Yes. We can replace cameras, recorders, storage, or wiring depending on the condition of the existing setup." },
       { question: "Do you provide maintenance after installation?", answer: "Yes. We provide support visits and AMC options for ongoing system health." },
     ],
-    nearby: ["Neb Sarai", "Malviya Nagar", "Khanpur"],
+    nearby: ["Neb Sarai-Delhi", "Malviya Nagar-Delhi", "Khanpur-Delhi"],
   },
   {
     slug: "greenpark",
@@ -117,7 +117,7 @@ export const locations: LocationDetails[] = [
       { question: "Are these systems suitable for clinics?", answer: "Yes. We regularly plan systems for reception, waiting areas, pharmacy counters, and entry points." },
       { question: "Can multiple family members access the cameras?", answer: "Yes. We can set up viewing access on approved phones for owners or family members." },
     ],
-    nearby: ["Hauz Khas", "Malviya Nagar", "Saket"],
+    nearby: ["Hauz Khas-Delhi", "Malviya Nagar-Delhi", "Saket-Delhi"],
   },
   {
     slug: "vasantkunj",
@@ -143,7 +143,7 @@ export const locations: LocationDetails[] = [
       { question: "Can you add cameras to my existing home setup?", answer: "Yes. We can inspect compatibility and expand the system where possible." },
       { question: "Do you set up viewing on phone?", answer: "Yes. Mobile app configuration and user guidance are part of the installation handover." },
     ],
-    nearby: ["Chhatarpur", "Ghitorni", "Sultanpur"],
+    nearby: ["Chhatarpur-Delhi", "Ghitorni-Delhi", "Sultanpur-Delhi"],
   },
   {
     slug: "hauzkhas",
@@ -169,7 +169,7 @@ export const locations: LocationDetails[] = [
       { question: "Do you work in small cafes and boutiques?", answer: "Yes. We install compact systems that cover entry, counter, storage, and customer areas." },
       { question: "Can you fix app access issues?", answer: "Yes. We troubleshoot phone connectivity, recorder networking, and user access problems." },
     ],
-    nearby: ["Green Park", "Malviya Nagar", "Saket"],
+    nearby: ["Green Park-Delhi", "Malviya Nagar-Delhi", "Saket-Delhi"],
   },
   {
     slug: "ghitorni",
@@ -195,7 +195,7 @@ export const locations: LocationDetails[] = [
       { question: "Do you install for commercial spaces as well?", answer: "Yes. We cover offices, storage units, and mixed-use sites along with homes." },
       { question: "Can the system be expanded later?", answer: "Yes. We can plan recorder capacity and camera placement with future growth in mind." },
     ],
-    nearby: ["Vasant Kunj", "Chhatarpur", "Sultanpur"],
+    nearby: ["Vasant Kunj-Delhi", "Chhatarpur-Delhi", "Sultanpur-Delhi"],
   },
   {
     slug: "malviyanagar",
@@ -221,7 +221,7 @@ export const locations: LocationDetails[] = [
       { question: "Can you help with blurry or dead cameras?", answer: "Yes. We diagnose camera faults, cable issues, power supply problems, and recorder failures." },
       { question: "Do you provide annual maintenance?", answer: "Yes. AMC and preventive service options are available." },
     ],
-    nearby: ["Hauz Khas", "Green Park", "Saket"],
+    nearby: ["Hauz Khas-Delhi", "Green Park-Delhi", "Saket-Delhi"],
   },
   {
     slug: "rajpur",
@@ -247,7 +247,7 @@ export const locations: LocationDetails[] = [
       { question: "Can parking areas be monitored clearly at night?", answer: "Yes. We recommend night-vision capable cameras and proper angle placement for vehicle visibility." },
       { question: "Will I be able to check footage on phone?", answer: "Yes. Live view and playback can be configured on supported phones." },
     ],
-    nearby: ["Sultanpur", "Chhatarpur", "Ghitorni"],
+    nearby: ["Sultanpur-Delhi", "Chhatarpur-Delhi", "Ghitorni-Delhi"],
   },
   {
     slug: "sultanpur",
@@ -273,7 +273,7 @@ export const locations: LocationDetails[] = [
       { question: "Do you handle both homes and offices?", answer: "Yes. We install systems for residential and small commercial properties in the area." },
       { question: "Can more cameras be added later?", answer: "Yes. We can plan recorder capacity and cable routes for future expansion." },
     ],
-    nearby: ["Rajpur", "Ghitorni", "Vasant Kunj"],
+    nearby: ["Rajpur-Delhi", "Ghitorni-Delhi", "Vasant Kunj-Delhi"],
   },
   {
     slug: "khanpur",
@@ -299,7 +299,7 @@ export const locations: LocationDetails[] = [
       { question: "Can old recorders be replaced without redoing everything?", answer: "Often yes. We inspect compatibility and replace only the necessary parts when possible." },
       { question: "Do you cover both live viewing and recording?", answer: "Yes. We set up both real-time viewing and playback access based on the system type." },
     ],
-    nearby: ["Neb Sarai", "Saket", "Malviya Nagar"],
+    nearby: ["Neb Sarai-Delhi", "Saket-Delhi", "Malviya Nagar-Delhi"],
   },
 ];
 
