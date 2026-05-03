@@ -36,7 +36,7 @@ function Router() {
           <Route path="/process" component={Process} />
           <Route path="/contact" component={Contact} />
           {locations.map((location) => (
-            <Route key={location.slug} path={`/${location.slug}`}>
+            <Route key={location.slug} path={`/${location.slug}-delhi`}>
               <LocationPage location={location} />
             </Route>
           ))}
