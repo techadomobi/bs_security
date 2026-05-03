@@ -304,7 +304,7 @@ export const locations: LocationDetails[] = [
 ];
 
 export const locationRoutes = Object.fromEntries(
-  locations.map((location) => [location.name, `/${location.slug}`]),
+  locations.map((location) => [location.name, `/${location.slug}-delhi`]),
 ) as Record<string, string>;
 
 export const locationsByName = Object.fromEntries(
