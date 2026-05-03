@@ -1,6 +1,6 @@
 import { Link } from "wouter";
 import { ShieldCheck, ChevronRight } from "lucide-react";
-import logo from "/images/logo_black.png";
+import logo from "/images/logo.png";
 
 const footerLinks = [
   { label: "Home", href: "/" },
@@ -24,9 +24,11 @@ export default function Footer() {
       <div className="container mx-auto px-4 md:px-6">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
           <div>
-            <div className="flex items-center gap-2 mb-6">
+            <div className="flex items-center gap-3 mb-6">
               <img src={logo} alt="B.S. Security logo" className="h-12 md:h-16 w-auto" />
-              <span className="sr-only">B.S. Security</span>
+              <span className="font-display font-bold text-lg md:text-xl text-white tracking-tight">
+                B.S. Security
+              </span>
             </div>
             <p className="text-sm mb-6 leading-relaxed">
               Delhi's most trusted neighborhood CCTV installation and security solutions provider. Your safety is our priority.
