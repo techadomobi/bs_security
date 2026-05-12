@@ -58,6 +58,27 @@ const processSteps = [
   { step: "04", icon: HeadphonesIcon, title: "Ongoing Support", desc: "We train you on the system and provide 24/7 support whenever you need us." },
 ];
 
+const insightPosts = [
+  {
+    icon: ShieldCheck,
+    title: "Security Doors, Silent Alarms & Security Monitoring",
+    desc: "A long-form guide to layered protection for homes and shops using security doors, security bars, access control systems, and silent alarms.",
+    href: "/insights/security-doors-silent-alarms",
+  },
+  {
+    icon: Video,
+    title: "C C T V Camera Installation, Repair & Networking",
+    desc: "Everything you need for CCTV Camera Full Setup installation, CCTV Camera Repair, CCTV Camera Networking, DVR Camera installation, and wireless systems.",
+    href: "/insights/cctv-camera-installation-networking",
+  },
+  {
+    icon: Zap,
+    title: "Comprehensive Security Solutions & Alarm Systems",
+    desc: "A practical breakdown of comprehensive security systems, burglar alarms, fire alarms, mobile network booster options, and monitoring service planning.",
+    href: "/insights/comprehensive-security-systems",
+  },
+];
+
 export default function Home() {
   return (
     <PageTransition>
@@ -295,6 +316,48 @@ export default function Home() {
                 </ScaleOnHover>
               </div>
             </FadeIn>
+          </div>
+        </section>
+
+        {/* ─── INSIGHTS ─────────────────────────────────────────────── */}
+        <section className="py-24 md:py-32 bg-white">
+          <div className="container mx-auto px-4 md:px-6">
+            <div className="text-center max-w-3xl mx-auto mb-16">
+              <FadeIn>
+                <p className="text-primary font-semibold text-sm uppercase tracking-wider mb-3">Latest Insights</p>
+                <SlideReveal>
+                  <h2 className="text-3xl md:text-5xl font-bold font-display mb-4">Long-Form Security Guides</h2>
+                </SlideReveal>
+                <RevealLine className="mx-auto w-16 mb-5 mt-3" />
+                <p className="text-lg text-foreground/70">
+                  Explore practical, SEO-friendly articles covering system design, installation planning, repair, monitoring, and the keyword themes clients search for most.
+                </p>
+              </FadeIn>
+            </div>
+
+            <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-8" staggerDelay={0.12}>
+              {insightPosts.map((post) => (
+                <StaggerItem key={post.title} direction="up">
+                  <AnimatedCard>
+                    <Card className="h-full border border-border/50 shadow-sm group overflow-hidden">
+                      <CardContent className="p-8 flex flex-col h-full">
+                        <AnimatedIcon className="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center mb-6 group-hover:bg-primary transition-colors">
+                          <post.icon className="w-7 h-7 text-primary group-hover:text-primary-foreground" />
+                        </AnimatedIcon>
+                        <h3 className="text-xl font-bold mb-3">{post.title}</h3>
+                        <p className="text-foreground/70 leading-relaxed mb-6 flex-1">{post.desc}</p>
+                        <Link href={post.href}>
+                          <Button variant="outline" className="w-full rounded-xl">
+                            Read the article
+                            <ArrowRight className="ml-2 w-4 h-4" />
+                          </Button>
+                        </Link>
+                      </CardContent>
+                    </Card>
+                  </AnimatedCard>
+                </StaggerItem>
+              ))}
+            </StaggerContainer>
           </div>
         </section>
 

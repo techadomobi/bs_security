@@ -10,6 +10,12 @@ const footerLinks = [
   { label: "Contact", href: "/contact" },
 ];
 
+const insightLinks = [
+  { label: "Security Doors & Silent Alarms", href: "/insights/security-doors-silent-alarms" },
+  { label: "CCTV Camera Installation & Networking", href: "/insights/cctv-camera-installation-networking" },
+  { label: "Comprehensive Security Systems", href: "/insights/comprehensive-security-systems" },
+];
+
 const servicesList = [
   "Home CCTV Installation",
   "Commercial Security Systems",
@@ -22,7 +28,7 @@ export default function Footer() {
   return (
     <footer className="bg-slate-950 text-white/70 py-12 border-t border-white/10">
       <div className="container mx-auto px-4 md:px-6">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 mb-12">
           <div>
             <div className="flex items-center gap-3 mb-6">
               <img src={logo} alt="B.S. Security logo" className="h-36 md:h-48 w-auto object-contain drop-shadow-[0_2px_4px_rgba(255,255,255,0.08)]" />
@@ -36,6 +42,23 @@ export default function Footer() {
             <h4 className="text-white font-bold mb-6">Quick Links</h4>
             <ul className="space-y-3">
               {footerLinks.map((link) => (
+                <li key={link.href}>
+                  <Link
+                    href={link.href}
+                    className="text-sm hover:text-primary transition-colors flex items-center gap-2"
+                  >
+                    <ChevronRight className="w-3 h-3" />
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div>
+            <h4 className="text-white font-bold mb-6">Insights</h4>
+            <ul className="space-y-3">
+              {insightLinks.map((link) => (
                 <li key={link.href}>
                   <Link
                     href={link.href}
