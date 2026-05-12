@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "wouter";
 import { AnimatePresence, motion } from "framer-motion";
-import { ShieldCheck, Menu, X } from "lucide-react";
+import { ShieldCheck, Menu, X, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import logo from "/images/logo.png";
 
@@ -59,6 +59,16 @@ export default function Navbar() {
                 {link.label}
               </Link>
             ))}
+            <Link href="/insights">
+              <Button
+                variant="outline"
+                className="rounded-full border-primary/20 bg-gradient-to-r from-primary/10 to-sky-100 px-5 text-primary shadow-sm transition-all hover:-translate-y-0.5 hover:border-primary/30 hover:bg-gradient-to-r hover:from-primary/15 hover:to-sky-200"
+                data-testid="button-navbar-insights"
+              >
+                <Sparkles className="mr-2 h-4 w-4" />
+                Insights
+              </Button>
+            </Link>
             <Link href="/contact">
               <Button className="rounded-full px-6 shadow-md hover:shadow-lg transition-shadow" data-testid="button-get-free-survey">
                 Get Free Survey
@@ -98,6 +108,12 @@ export default function Navbar() {
                   {link.label}
                 </Link>
               ))}
+              <Link href="/insights">
+                <Button size="lg" variant="outline" className="w-full mt-4 rounded-full border-primary/20 bg-gradient-to-r from-primary/10 to-sky-100 text-primary" data-testid="mobile-button-insights">
+                  <Sparkles className="mr-2 h-4 w-4" />
+                  Insights
+                </Button>
+              </Link>
               <Link href="/contact">
                 <Button size="lg" className="w-full mt-6 rounded-full" data-testid="mobile-button-cta">
                   Get Free Survey

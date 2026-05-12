@@ -15,6 +15,7 @@ import NotFound from "@/pages/not-found";
 import CCTVGuide from "@/pages/CCTVGuide";
 import AlarmSystemsGuide from "@/pages/AlarmSystemsGuide";
 import CommercialSecurityGuide from "@/pages/CommercialSecurityGuide";
+import Insights from "@/pages/Insights";
 import SecurityDoorsSilentAlarms from "@/pages/SecurityDoorsSilentAlarms";
 import CCTVInstallationNetworking from "@/pages/CCTVInstallationNetworking";
 import ComprehensiveSecuritySystems from "@/pages/ComprehensiveSecuritySystems";
@@ -44,6 +45,7 @@ function Router() {
           <Route path="/cctv-guide" component={CCTVGuide} />
           <Route path="/alarm-systems-guide" component={AlarmSystemsGuide} />
           <Route path="/commercial-security-guide" component={CommercialSecurityGuide} />
+          <Route path="/insights" component={Insights} />
           <Route path="/insights/security-doors-silent-alarms" component={SecurityDoorsSilentAlarms} />
           <Route path="/insights/cctv-camera-installation-networking" component={CCTVInstallationNetworking} />
           <Route path="/insights/comprehensive-security-systems" component={ComprehensiveSecuritySystems} />
