@@ -12,6 +12,9 @@ import Process from "@/pages/Process";
 import Contact from "@/pages/Contact";
 import LocationPage from "@/pages/LocationPage";
 import NotFound from "@/pages/not-found";
+import CCTVGuide from "@/pages/CCTVGuide";
+import AlarmSystemsGuide from "@/pages/AlarmSystemsGuide";
+import CommercialSecurityGuide from "@/pages/CommercialSecurityGuide";
 import { locations } from "@/data/locations";
 
 const queryClient = new QueryClient();
@@ -35,6 +38,9 @@ function Router() {
           <Route path="/portfolio" component={Portfolio} />
           <Route path="/process" component={Process} />
           <Route path="/contact" component={Contact} />
+          <Route path="/cctv-guide" component={CCTVGuide} />
+          <Route path="/alarm-systems-guide" component={AlarmSystemsGuide} />
+          <Route path="/commercial-security-guide" component={CommercialSecurityGuide} />
           {locations.map((location) => (
             <Route key={location.slug} path={`/${location.slug}-delhi`}>
               <LocationPage location={location} />
