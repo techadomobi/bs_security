@@ -13,6 +13,8 @@ const navLinks = [
   { label: "Contact", href: "/contact" },
 ];
 
+const isInsightsRoute = (path: string) => path.startsWith("/insights");
+
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -62,7 +64,11 @@ export default function Navbar() {
             <Link href="/insights">
               <Button
                 variant="outline"
-                className="rounded-full border-primary/20 bg-gradient-to-r from-primary/10 to-sky-100 px-5 text-primary shadow-sm transition-all hover:-translate-y-0.5 hover:border-primary/30 hover:bg-gradient-to-r hover:from-primary/15 hover:to-sky-200"
+                className={`rounded-full border-primary/20 px-5 shadow-sm transition-all hover:-translate-y-0.5 hover:border-primary/30 ${
+                  isInsightsRoute(location)
+                    ? "bg-primary text-primary-foreground hover:bg-primary/90"
+                    : "bg-gradient-to-r from-primary/10 to-sky-100 text-primary hover:bg-gradient-to-r hover:from-primary/15 hover:to-sky-200"
+                }`}
                 data-testid="button-navbar-insights"
               >
                 <Sparkles className="mr-2 h-4 w-4" />
